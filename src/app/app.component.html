@@ -1,0 +1,24 @@
+<div class="app">
+  <div class="p1">
+    <div class="app-nav">
+      <img src="assets/images/karaoke-title.png" alt="Karaoke" class="app-nav-img" />
+    </div>
+
+    <div class="app-body">
+      <div class="app-body-content" *ngIf="currentSong">
+        <Player [currentSong]="currentSong"></Player>
+      </div>
+
+      <div class="app-body-songlist p1" *ngIf="!currentSong">
+        <song-selection
+          [songList]="songList"
+          [currentSong]="currentSong"
+          (onChooseSong)="handleChooseSong($event)"></song-selection>
+      </div>
+    </div>
+
+    <button class="app-backbutton" *ngIf="currentSong" (click)="handleClearCurrentSong()">
+      ← Back to list of songs
+    </button>
+  </div>
+</div>
