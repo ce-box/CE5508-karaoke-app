@@ -11,13 +11,7 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        sh 'npm i'
+        echo 'holli'
       }
     }
-    stage('Despliegue') {
-      steps {
-        sh 'ng serve'
-      }
-    }
-  }
 }
