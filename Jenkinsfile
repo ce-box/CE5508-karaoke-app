@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        sh 'npm i'
+        echo 'npm i'
       }
     }
     stage('Despliegue') {
