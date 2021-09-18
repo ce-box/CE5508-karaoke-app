@@ -11,12 +11,12 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        echo 'npm i'
+        sh 'npm i'
       }
     }
     stage('Despliegue') {
       steps {
-        echo 'ng serve'
+        sh 'ng serve'
       }
     }
   }
