@@ -1,10 +1,14 @@
 pipeline {
-    agent { dockerfile true }
+    agent { dockerfile {
+        filename 'Dockerfile'
+        dir 'build'
+        label 'ng-docker-app'
+    } }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                echo 'node --version'
+                echo 'svn --version'
             }
         }
     }
