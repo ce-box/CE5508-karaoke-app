@@ -1,10 +1,11 @@
 pipeline {
-  agent { dockerfile true }
-  stages {
-    stage('Docker compose dependencies') {
-      steps {
-        echo 'docker-compose build angular-app && docker-compose up'
-      }
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
     }
-  }
 }
