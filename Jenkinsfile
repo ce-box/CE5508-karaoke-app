@@ -9,14 +9,9 @@ pipeline {
   }
 
   stages {
-    stage('Install dependencies') {
+    stage('Docker compose dependencies') {
       steps {
-        echo 'npm i'
-      }
-    }
-    stage('Despliegue') {
-      steps {
-        sh 'ng serve'
+        sh 'docker-compose build angular-app && docker-compose up'
       }
     }
   }
