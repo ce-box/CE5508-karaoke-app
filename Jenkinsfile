@@ -1,9 +1,5 @@
 pipeline {
-    agent { dockerfile {
-        filename 'Dockerfile'
-        dir 'build'
-        label 'ng-docker-app'
-    } }
+    agent { dockerfile true}
     stages {
         stage('Test') {
             steps {
