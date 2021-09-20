@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { dockerfile true }
   tools {
     nodejs '16.9.1'
   }
@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Docker compose dependencies') {
       steps {
-        sh 'docker-compose build angular-app && docker-compose up'
+        echo 'docker-compose build angular-app && docker-compose up'
       }
     }
   }
