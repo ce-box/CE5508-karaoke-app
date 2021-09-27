@@ -1,23 +1,11 @@
 pipeline {
-  agent any
-  tools {
-    nodejs '16.9.1'
-  }
-
-  options {
-    timeout(time: 2, unit: 'MINUTES')
-  }
-
-  stages {
-    stage('Install dependencies') {
-      steps {
-        echo 'npm i'
-      }
+    agent { dockerfile true}
+    stages {
+        stage('Test') {
+            steps {
+                echo 'node --version'
+                echo 'svn --version'
+            }
+        }
     }
-    stage('Despliegue') {
-      steps {
-        sh 'ng serve'
-      }
-    }
-  }
 }
