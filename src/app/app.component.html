@@ -8,8 +8,8 @@
       ></song-selection>
     </div>
     <div class="app-body-content" *ngIf="currentSong">
-      <app-loader-song [song]="currentSong" (currentSongLoader)="homeDirection($event)"></app-loader-song>
-      <!--<Player [currentSong]="currentSong"></Player>-->
+      <!--<app-loader-song [song]="currentSong" (currentSongLoader)="homeDirection($event)"></app-loader-song>-->
+      <Player [currentSong]="currentSong"></Player>
     </div>
   </div>
 </div>

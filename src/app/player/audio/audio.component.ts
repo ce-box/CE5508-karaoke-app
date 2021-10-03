@@ -11,6 +11,7 @@ export class AudioComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Output() onCurrentTimeUpdate = new EventEmitter<number>()
   @Output() onPlayPause = new EventEmitter<boolean>()
+  @Output() onSongTime = new EventEmitter<string>()
   @Input() src: string = ''
   private audio: HTMLAudioElement
   private timeSubscription: Subscription
@@ -81,6 +82,7 @@ export class AudioComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleAudioLoaded = (e: HTMLMediaElementEventMap) => {
     this.duration = this.service.formatTime(this.audio.duration)
+    this.onSongTime.emit(this.duration);
   }
 
   handleAudioTimeUpdate = (e: HTMLMediaElementEventMap) => {

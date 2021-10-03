@@ -1,38 +1,77 @@
-<div class="player">
-
-  <div class="player-info p2">
-    <div class="player-info-song">
-      <p class="player-info-song-title">{{ currentSong.title }}</p>
-      <p class="player-info-song-artist">{{ currentSong.artist }}</p>
-    </div>
-
-    <div class="player-info-points">
-      <player-points [points]="points"></player-points>
-    </div>
+<header class="header-main">
+  <div class="header-main-home-button">
+    <button class="home-button">
+      <img width="68" src="../../assets/images/back.png" alt="" />
+    </button>
   </div>
-
-  <div class="player-screen">
-    <div class="player-screen-lyrics p1">
+  <div class="header-main-search">
+    <img width="400" src="../../assets/images/astraoke.png" alt="" />
+    <button class="pause-button">
+      <img src="../../assets/images/pause.png" alt="">
+    </button>
+  </div>
+  <div class="header-main-user-button">
+    <button class="user-button">
+      <img width="60" src="../../assets/images/rocket.png" alt="" />
+    </button>
+  </div>
+</header>
+<main class="main-lyric">
+  <div class="section-letter__container">
+    <div class="section-letter-lyric">
       <player-lyrics
         [src]="currentSong.lyrics"
         [delay]="currentSong.lyricDelay"
         [onCurrentTimeUpdate]="onLyricsTimeUpdate"
         (onNewLine)="handleLyricsNewLine($event)"
-        ></player-lyrics>
-    </div>
-
-    <div class="player-screen-controls p2">
-      <player-audio
-        [src]="currentSong.audio"
-        (onCurrentTimeUpdate)="handleAudioTimeUpdate($event)"
-        (onPlayPause)="handleAudioPlayPause($event)"
-        ></player-audio>
-
-      <player-speech
-        [playPause]="onSpeechStart"
-        (onSpeechFound)="handleSpeechFound($event)"
-      ></player-speech>
+      ></player-lyrics>
     </div>
   </div>
-</div>
+</main>
+<footer class="footer-main">
+  <div class="footer-main__points">
+    <p class="points-tittle">Puntaje</p>
+    <p class="points-number">200</p>
+    <player-points [points]="points"></player-points>
+  </div>
+  <div class="cassette-main__boder">
+      <div class="cassette-main__circle-container">
+        <div class="circle-container__circle"></div>
+        <div class="circle-container__circle"></div>
+      </div>
+      <div class="cassette-main__information-container">
+        <div class="information-container__cassette">
+          <img width="50rem" src="../../assets/images/image 20.png" alt="Album">
+          <h1 class="container__cassette-tittle">{{ currentSong.title }}</h1>
+          <p class="container__cassette-artist">{{ currentSong.artist }}</p>
+        </div>
+      </div>
+      <div class="cassette-main__elements-container">
+        <div class="elements-container__cassette-one">
+          <div class="elements-containe__casette-two">
+
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="footer-main__time">
+    <p class="time-initial">{{ currentTime }}</p>
+    <p class="time-final">{{ songTime }}</p>
+  </div>
+
+  <div class="player-screen-controls p2">
+    <player-audio
+      [src]="currentSong.audio"
+      (onCurrentTimeUpdate)="handleAudioTimeUpdate($event)"
+      (onPlayPause)="handleAudioPlayPause($event)"
+      (onSongTime)="handleAudioTimeSong($event)"
+      ></player-audio>
+
+    <player-speech
+      [playPause]="onSpeechStart"
+      (onSpeechFound)="handleSpeechFound($event)"
+    ></player-speech>
+  </div>
+</footer>
+
 

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, Ou
 import { Observable, Subscription } from 'rxjs'
 import { PlayerService } from './player.service'
 import { Song } from '../songs/song.interface';
+import { time } from 'console';
 
 @Component({
   selector: 'Player',
@@ -10,9 +11,11 @@ import { Song } from '../songs/song.interface';
 })
 export class PlayerComponent implements OnChanges {
   @Input() currentSong: Song
+  public songTime: string = '';
   public points: number = 0
   public lines: string[] = []
   public onLyricsTimeUpdate = new EventEmitter<number>()
+  public currentTime: string;
   public onSpeechStart = new EventEmitter<boolean>()
   private readonly POINTS_MULTIPLIER = 5
 
@@ -39,7 +42,12 @@ export class PlayerComponent implements OnChanges {
   }
 
   handleAudioTimeUpdate = (time: number) => {
-    this.onLyricsTimeUpdate.emit(time)
+    this.onLyricsTimeUpdate.emit(time);
+    this.currentTime = this.PlayerService.formatTime(time);
+  }
+
+  handleAudioTimeSong = (time: string) => {
+    this.songTime = time;
   }
 
   handleLyricsNewLine = (line) => {
