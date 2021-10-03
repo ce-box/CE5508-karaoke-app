@@ -1,3 +1,41 @@
+<header class="header-main">
+  <div class="header-main-home-button">
+    <button class="home-button">
+      <img width="68" src="./assets/home.png" alt="" />
+    </button>
+  </div>
+  <div class="header-main-search">
+    <img width="400" src="./assets/astraoke.png" alt="" />
+    <h1 class="main-tittle-search">¿Qué vas a cantar hoy?</h1>
+    <div class="header-search-input">
+      <input type="text" class="input" placeholder="Buscá tu canción..." />
+      <button class="plus-button">
+        <img width="40" src="./assets/plus.png" alt="" />
+      </button>
+    </div>
+  </div>
+  <div class="header-main-user-button">
+    <button class="user-button">
+      <img width="60" src="./assets/rocket.png" alt="" />
+    </button>
+  </div>
+</header>
+<section class="carousel">
+  <div class="carousel__container">
+    <div class="carousel-item" (click)="handleChooseSong($event, song)" *ngFor="let song of songList" [class.songlist-item--selected]="currentSong === song" >
+      <img
+        class="carousel-item__img"
+        src="../../assets/images/image 20.png"
+        alt="Flower"
+      />
+      <div class="carousel-item__details">
+        <h3 class="carousel-item__details--title">{{ song.title }}</h3>
+        <p class="carousel-item__details--subtitle">{{ song.artist }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--
 <ul class="songlist">
   <li class="songlist-item" *ngFor="let song of songList" [class.songlist-item--selected]="currentSong === song">
     <a href="" (click)="handleChooseSong($event, song)" class="songlist-item-anchor">
@@ -8,4 +46,4 @@
       </span>
     </a>
   </li>
-</ul>
+</ul>-->
