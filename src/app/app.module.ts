@@ -11,7 +11,6 @@ import { SongsService } from './songs/songs.service';
 import { SpeechComponent } from './player/speech/speech.component'
 import { RecognitionService } from './player/speech/recognition.service';
 import { SongSelectionComponent } from './components/song-selection/song-selection.component';
-import { PointsComponent } from './player/points/points.component';
 import { LoaderSongComponent } from './components/loader-song/loader-song.component'
 
 @NgModule({
@@ -22,7 +21,6 @@ import { LoaderSongComponent } from './components/loader-song/loader-song.compon
     LyricsComponent,
     SpeechComponent,
     SongSelectionComponent,
-    PointsComponent,
     LoaderSongComponent
   ],
   imports: [

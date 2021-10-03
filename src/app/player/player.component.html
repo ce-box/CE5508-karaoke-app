@@ -1,3 +1,4 @@
+<section class="main-player-section">
 <header class="header-main">
   <div class="header-main-home-button">
     <button class="home-button">
@@ -6,9 +7,12 @@
   </div>
   <div class="header-main-search">
     <img width="400" src="../../assets/images/astraoke.png" alt="" />
-    <button class="pause-button">
-      <img src="../../assets/images/pause.png" alt="">
-    </button>
+    <player-audio
+      [src]="currentSong.audio"
+      (onCurrentTimeUpdate)="handleAudioTimeUpdate($event)"
+      (onPlayPause)="handleAudioPlayPause($event)"
+      (onSongTime)="handleAudioTimeSong($event)"
+    ></player-audio>
   </div>
   <div class="header-main-user-button">
     <button class="user-button">
@@ -25,16 +29,20 @@
         [onCurrentTimeUpdate]="onLyricsTimeUpdate"
         (onNewLine)="handleLyricsNewLine($event)"
       ></player-lyrics>
+      <player-speech
+      [playPause]="onSpeechStart"
+      (onSpeechFound)="handleSpeechFound($event)"
+    ></player-speech>
     </div>
   </div>
 </main>
 <footer class="footer-main">
   <div class="footer-main__points">
     <p class="points-tittle">Puntaje</p>
-    <p class="points-number">200</p>
-    <player-points [points]="points"></player-points>
+    <p class="points-number">{{ points }}</p>
   </div>
-  <div class="cassette-main__boder">
+  <div class="cassette-main__container">
+    <div class="cassette-main__boder">
       <div class="cassette-main__circle-container">
         <div class="circle-container__circle"></div>
         <div class="circle-container__circle"></div>
@@ -53,25 +61,13 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
   <div class="footer-main__time">
     <p class="time-initial">{{ currentTime }}</p>
     <p class="time-final">{{ songTime }}</p>
   </div>
-
-  <div class="player-screen-controls p2">
-    <player-audio
-      [src]="currentSong.audio"
-      (onCurrentTimeUpdate)="handleAudioTimeUpdate($event)"
-      (onPlayPause)="handleAudioPlayPause($event)"
-      (onSongTime)="handleAudioTimeSong($event)"
-      ></player-audio>
-
-    <player-speech
-      [playPause]="onSpeechStart"
-      (onSpeechFound)="handleSpeechFound($event)"
-    ></player-speech>
-  </div>
 </footer>
+</section>
 
 

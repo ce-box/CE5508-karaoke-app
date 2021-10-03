@@ -1,3 +1,9 @@
+.main-player-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 62.5%;
+}
 header.header-main {
   display: flex;
   justify-content: space-between;
@@ -46,7 +52,7 @@ header.header-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8rem;
+  padding-top: 8rem;
   width: 60%;
 }
 
@@ -71,17 +77,24 @@ header.header-main {
 }
 
 .main-lyric {
+  padding-top: 0;
+  padding-bottom: 5rem;
+}
+
+.section-letter__container{
   border-top: #F9F6FF solid 3px;
   border-left: #F9F6FF solid 3px;
   border-right: #F9F6FF solid 3px;
   border-bottom: #F9F6FF solid 3px;
   border-radius: 30px;
   box-shadow: 0 0 10px 3px #F9F6FF;
-  margin: 5rem 20rem;
-  padding: 5rem 15rem;
+  margin: 0 20rem;
+  padding: 1rem 15rem;
+  min-height: 19rem;
   display: flex;
   justify-content: center;
   align-content: center;
+
 }
 
 .letter-lyric {
@@ -92,7 +105,7 @@ header.header-main {
 .footer-main {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  height: 100%;
   margin: 0 26rem;
 }
 
@@ -129,22 +142,28 @@ header.header-main {
   0 0 1px #F2178F , 0 0 5px #F2178F
 }
 
+.cassette-main__container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
 .cassette-main__boder {
   border-top: #3DF1B0 solid 3px;
   border-left: #3DF1B0 solid 3px;
   border-right: #3DF1B0 solid 3px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  width: 60%;
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-
+  width: 100%;
+  height: fit-content;
   box-shadow: 0 0 10px 3px #3DF1B0;
 }
 
 .cassette-main__circle-container{
   display: flex;
   width: 100%;
+  height: fit-content;
   justify-content: space-between;
   padding: 1.5rem;
 }
@@ -166,6 +185,7 @@ header.header-main {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   box-shadow: 0 0 10px 3px #F2178F;
+  height: fit-content;
   margin: 0 3rem;
 }
 
@@ -220,5 +240,7 @@ header.header-main {
   padding-top: 5rem;
 
 }
+
+
 
 
