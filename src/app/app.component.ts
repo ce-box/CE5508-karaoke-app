@@ -28,4 +28,8 @@ export class AppComponent {
   handleClearCurrentSong() {
     this.currentSong = null
   }
+
+  homeDirection(currentSong: Song) {
+    this.currentSong = currentSong;
+  }
 }

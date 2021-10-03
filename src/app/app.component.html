@@ -8,15 +8,8 @@
       ></song-selection>
     </div>
     <div class="app-body-content" *ngIf="currentSong">
-      <Player [currentSong]="currentSong"></Player>
+      <app-loader-song [song]="currentSong" (currentSongLoader)="homeDirection($event)"></app-loader-song>
+      <!--<Player [currentSong]="currentSong"></Player>-->
     </div>
   </div>
-
-  <button
-    class="app-backbutton"
-    *ngIf="currentSong"
-    (click)="handleClearCurrentSong()"
-  >
-    ← Back to list of songs
-  </button>
 </div>

@@ -10,8 +10,9 @@ import { LyricsComponent } from './player/lyrics/lyrics.component'
 import { SongsService } from './songs/songs.service';
 import { SpeechComponent } from './player/speech/speech.component'
 import { RecognitionService } from './player/speech/recognition.service';
-import { SongSelectionComponent } from './song-selection/song-selection.component';
-import { PointsComponent } from './player/points/points.component'
+import { SongSelectionComponent } from './components/song-selection/song-selection.component';
+import { PointsComponent } from './player/points/points.component';
+import { LoaderSongComponent } from './components/loader-song/loader-song.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PointsComponent } from './player/points/points.component'
     LyricsComponent,
     SpeechComponent,
     SongSelectionComponent,
-    PointsComponent
+    PointsComponent,
+    LoaderSongComponent
   ],
   imports: [
     BrowserModule,
