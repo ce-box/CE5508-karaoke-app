@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { Song } from '../../songs/song.interface'
+
+import { SongsService } from '../../services/songs.service'
+
+import { Song } from '../../models/song'
 
 @Component({
   selector: 'song-selection',
@@ -8,18 +11,31 @@ import { Song } from '../../songs/song.interface'
 })
 export class SongSelectionComponent implements OnInit {
 
-  @Input() songList: Song[]
-  @Input() currentSong: Song
-  @Output() onChooseSong = new EventEmitter<Song>()
+  @Output() onChooseSong = new EventEmitter<Song>();
+  songs: Song[] = [];
 
-  constructor() { }
+  constructor(
+    private songService: SongsService
+  ) { }
 
   ngOnInit() {
+    this.songService.getAllSongs()
+    .subscribe(data => {
+      this.songs = data;
+    });
   }
 
   handleChooseSong($event, song: Song) {
     $event.preventDefault()
     this.onChooseSong.emit(song)
+  }
+
+  onDeleteSong(id: string) {
+    this.songService.delete(id)
+    .subscribe(() => {
+      const songIndex = this.songs.findIndex(item => item._id === id);
+      this.songs.splice(songIndex, 1);
+    })
   }
 
 }

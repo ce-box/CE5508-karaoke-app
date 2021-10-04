@@ -22,15 +22,21 @@
 </header>
 <section class="carousel">
   <div class="carousel__container">
-    <div class="carousel-item" (click)="handleChooseSong($event, song)" *ngFor="let song of songList" [class.songlist-item--selected]="currentSong === song" >
-      <img
-        class="carousel-item__img"
-        src="../../assets/images/image 20.png"
-        alt="Flower"
-      />
-      <div class="carousel-item__details">
-        <h3 class="carousel-item__details--title">{{ song.title }}</h3>
-        <p class="carousel-item__details--subtitle">{{ song.artist }}</p>
+    <div class="carousel-item-container" *ngFor="let song of songs">
+      <div class="carousel-item" (click)="handleChooseSong($event, song)">
+        <img
+          class="carousel-item__img"
+          src="../../assets/images/image 20.png"
+          alt="Flower"
+        />
+        <div class="carousel-item__details">
+          <h3 class="carousel-item__details--title">{{ song.name }}</h3>
+          <p class="carousel-item__details--subtitle">{{ song.artist }}</p>
+        </div>
+      </div>
+      <div class="carousel__container--button-container">
+        <img (click)='onDeleteSong(song._id)' class="button-container__delete" src="../../../assets/images/delete.svg" alt="">
+        <img class="button-container__edit" src="../../../assets/images/edit.svg" alt="">
       </div>
     </div>
   </div>

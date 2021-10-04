@@ -2,8 +2,6 @@
   <div class="app-body">
     <div class="app-body-songlist" *ngIf="!currentSong">
       <song-selection
-        [songList]="songList"
-        [currentSong]="currentSong"
         (onChooseSong)="handleChooseSong($event)"
       ></song-selection>
     </div>
