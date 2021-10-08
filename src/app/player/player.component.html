@@ -8,7 +8,7 @@
   <div class="header-main-search">
     <img width="400" src="../../assets/images/astraoke.png" alt="" />
     <player-audio
-      [src]="currentSong.audio"
+      [src]="currentSong.url"
       (onCurrentTimeUpdate)="handleAudioTimeUpdate($event)"
       (onPlayPause)="handleAudioPlayPause($event)"
       (onSongTime)="handleAudioTimeSong($event)"
@@ -25,7 +25,7 @@
     <div class="section-letter-lyric">
       <player-lyrics
         [src]="currentSong.lyrics"
-        [delay]="currentSong.lyricDelay"
+        [delay]="delaySong"
         [onCurrentTimeUpdate]="onLyricsTimeUpdate"
         (onNewLine)="handleLyricsNewLine($event)"
       ></player-lyrics>
@@ -49,8 +49,8 @@
       </div>
       <div class="cassette-main__information-container">
         <div class="information-container__cassette">
-          <img width="50rem" src="../../assets/images/image 20.png" alt="Album">
-          <h1 class="container__cassette-tittle">{{ currentSong.title }}</h1>
+          <img width="50rem" [src]="currentSong.cover" alt="Album">
+          <h1 class="container__cassette-tittle">{{ currentSong.name }}</h1>
           <p class="container__cassette-artist">{{ currentSong.artist }}</p>
         </div>
       </div>

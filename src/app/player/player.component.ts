@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core'
 import { Observable, Subscription } from 'rxjs'
 import { PlayerService } from './player.service'
-import { Song } from '../songs/song.interface';
-import { time } from 'console';
+import { Song } from '../models/song';
 
 @Component({
   selector: 'Player',
@@ -12,6 +11,8 @@ import { time } from 'console';
 export class PlayerComponent implements OnChanges {
   @Input() currentSong: Song
   public songTime: string = '';
+  public delaySong: string = '0';
+  public sonFile: string = "./../../assets/songs/dont-stop-believing/dont-stop-believing.lrc"
   public points: number = 0
   public lines: string[] = []
   public onLyricsTimeUpdate = new EventEmitter<number>()

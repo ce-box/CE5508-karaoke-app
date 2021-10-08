@@ -1,13 +1,13 @@
 <div class="app">
   <div class="app-body">
-    <div class="app-body-songlist" *ngIf="!currentSong">
+    <div class="app-body-songlist" *ngIf="!OnCurrentSong && !onPlaySong">
       <song-selection
         (onChooseSong)="handleChooseSong($event)"
       ></song-selection>
     </div>
-    <div class="app-body-content" *ngIf="currentSong">
-      <!--<app-loader-song [song]="currentSong" (currentSongLoader)="homeDirection($event)"></app-loader-song>-->
-      <Player [currentSong]="currentSong"></Player>
+    <div class="app-body-content" *ngIf="OnCurrentSong || onPlaySong">
+      <app-loader-song *ngIf="OnCurrentSong" [song]="OnCurrentSong" (currentSongLoader)="homeDirection($event)" (playSong)="handlePlaySong($event)"></app-loader-song>
+      <Player  *ngIf="onPlaySong" [currentSong]="onPlaySong"></Player>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Song } from '../../songs/song.interface';
+import { Song } from '../../models/song';
 
 @Component({
   selector: 'app-loader-song',
@@ -10,13 +10,16 @@ import { Song } from '../../songs/song.interface';
 export class LoaderSongComponent implements OnInit {
 
   @Input() song: Song = {
-    artist: ' ',
-    title: ' ',
-    lyrics: ' ',
-    audio: ' ',
-    lyricDelay: 0
+    _id: '',
+    name: '',
+    artist: '',
+    album: '',
+    cover: '',
+    url: '',
+    lyrics: '',
   };
   @Output() currentSongLoader = new EventEmitter<Song>();
+  @Output() playSong = new EventEmitter<Song>();
 
   constructor() { }
 
@@ -25,7 +28,13 @@ export class LoaderSongComponent implements OnInit {
   }
 
   handleClearCurrentSong() {
-    this.currentSongLoader.emit(null)
+    this.currentSongLoader.emit(null);
+    this.playSong.emit(null);
+  }
+
+  handlePlaySong() {
+    this.currentSongLoader.emit(null);
+    this.playSong.emit(this.song);
   }
 
 }

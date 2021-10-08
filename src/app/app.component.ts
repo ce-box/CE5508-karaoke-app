@@ -9,7 +9,8 @@ import './natural'
 })
 export class AppComponent {
 
-  public currentSong: Song
+  public OnCurrentSong: Song;
+  public onPlaySong: Song;
 
   constructor(
   ) {}
@@ -18,14 +19,18 @@ export class AppComponent {
   }
 
   handleChooseSong(song: Song) {
-    this.currentSong = song
+    this.OnCurrentSong = song
   }
 
   handleClearCurrentSong() {
-    this.currentSong = null
+    this.OnCurrentSong = null
   }
 
   homeDirection(currentSong: Song) {
-    this.currentSong = currentSong;
+    this.OnCurrentSong = currentSong;
+  }
+
+  handlePlaySong(playSong: Song) {
+    this.onPlaySong = playSong;
   }
 }

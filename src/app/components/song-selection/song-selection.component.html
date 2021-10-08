@@ -26,7 +26,7 @@
       <div class="carousel-item" (click)="handleChooseSong($event, song)">
         <img
           class="carousel-item__img"
-          src="../../assets/images/image 20.png"
+          [src]="song.cover"
           alt="Flower"
         />
         <div class="carousel-item__details">

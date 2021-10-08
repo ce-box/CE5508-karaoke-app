@@ -28,13 +28,13 @@
   </section>
   <section class="main-song__section-information">
     <div class="section-information-song">
-      <img width="100rem" src="../../../assets/images/image 20.png" alt="">
+      <img width="100rem" [src]="song.cover" alt="">
       <div>
-        <h1 class="song-name">{{ song.title }}</h1>
+        <h1 class="song-name">{{ song.name }}</h1>
         <p class="artist-name">{{ song.artist }}</p>
       </div>
     </div>
-    <button class="plus-button">
+    <button (click)="handlePlaySong()" class="plus-button">
       <img src="../../../assets/images/play_white.png" alt="">
     </button>
     <p class="time-font">5:20</p>

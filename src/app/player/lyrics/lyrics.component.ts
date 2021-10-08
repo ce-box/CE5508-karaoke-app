@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Http, Response } from '@angular/http'
+import { HttpClient } from '@angular/common/http'
+import { tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import * as LRC from 'lrc.js'
 
@@ -30,7 +32,8 @@ export class LyricsComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(
     private service: PlayerService,
-    private Http: Http
+    private http: HttpClient,
+    private httpLocal: Http
   ) { }
 
   ngOnInit() {
@@ -50,12 +53,20 @@ export class LyricsComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   loadLyrics(src) {
-    this.Http
-      .get(src)
-      .subscribe((response: Response) => {
-        this.processLyrics(response.text())
+    const type: string = 'application/lrc'
+    this.http.get(src, {responseType: 'blob'}, )
+    .pipe(
+      tap(content => {
+        const blob = new Blob([content], {type});
+      })
+    ).subscribe(response => {
+      const blob = new Blob([response], {type});
+      blob.text().then(content => {
+        this.processLyrics(content)
         this.timeSubscription = this.onCurrentTimeUpdate.subscribe(this.handleUpdateTime)
       })
+    }
+    )
   }
 
   processLyrics(lrcText) {

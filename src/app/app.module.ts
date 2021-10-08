@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
@@ -25,7 +26,8 @@ import { LoaderSongComponent } from './components/loader-song/loader-song.compon
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   providers: [
     PlayerService,
