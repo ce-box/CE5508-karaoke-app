@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http'
+import {  FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
@@ -12,7 +13,8 @@ import { LyricsComponent } from './player/lyrics/lyrics.component'
 import { SpeechComponent } from './player/speech/speech.component'
 import { RecognitionService } from './player/speech/recognition.service';
 import { SongSelectionComponent } from './components/song-selection/song-selection.component';
-import { LoaderSongComponent } from './components/loader-song/loader-song.component'
+import { LoaderSongComponent } from './components/loader-song/loader-song.component';
+import { AccessComponent } from './components/access/access.component'
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { LoaderSongComponent } from './components/loader-song/loader-song.compon
     LyricsComponent,
     SpeechComponent,
     SongSelectionComponent,
-    LoaderSongComponent
+    LoaderSongComponent,
+    AccessComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
     PlayerService,

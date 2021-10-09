@@ -11,6 +11,7 @@ export class AppComponent {
 
   public OnCurrentSong: Song;
   public onPlaySong: Song;
+  public token: string = '';
 
   constructor(
   ) {}
@@ -32,5 +33,9 @@ export class AppComponent {
 
   handlePlaySong(playSong: Song) {
     this.onPlaySong = playSong;
+  }
+
+  handleChooseToken(token: string) {
+    this.token = token;
   }
 }

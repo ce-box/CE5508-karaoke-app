@@ -1,5 +1,8 @@
 <div class="app">
-  <div class="app-body">
+  <div *ngIf="!token" class="access-body">
+    <app-access (token)="handleChooseToken($event)" ></app-access>
+  </div>
+  <div *ngIf="token" class="app-body">
     <div class="app-body-songlist" *ngIf="!OnCurrentSong && !onPlaySong">
       <song-selection
         (onChooseSong)="handleChooseSong($event)"
