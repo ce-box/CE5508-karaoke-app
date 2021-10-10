@@ -1,3 +1,6 @@
+<a href="#modal">edfedfedfdf</a>
+<app-create-song class="container-all" id="modal"></app-create-song>
+<div>
 <header class="header-main">
   <div class="header-main-home-button">
     <button class="home-button">
@@ -24,23 +27,31 @@
   <div class="carousel__container">
     <div class="carousel-item-container" *ngFor="let song of songs">
       <div class="carousel-item" (click)="handleChooseSong($event, song)">
-        <img
-          class="carousel-item__img"
-          [src]="song.cover"
-          alt="Flower"
-        />
+        <img class="carousel-item__img" [src]="song.cover" alt="Flower" />
         <div class="carousel-item__details">
           <h3 class="carousel-item__details--title">{{ song.name }}</h3>
           <p class="carousel-item__details--subtitle">{{ song.artist }}</p>
         </div>
       </div>
       <div class="carousel__container--button-container">
-        <img (click)='onDeleteSong(song._id)' class="button-container__delete" src="../../../assets/images/delete.svg" alt="">
-        <img class="button-container__edit" src="../../../assets/images/edit.svg" alt="">
+        <img
+          (click)="onDeleteSong(song._id)"
+          class="button-container__delete"
+          src="../../../assets/images/delete.svg"
+          alt=""
+        />
+        <img
+          class="button-container__edit"
+          src="../../../assets/images/edit.svg"
+          alt=""
+        />
       </div>
     </div>
   </div>
 </section>
+</div>
+
+
 <!--
 <ul class="songlist">
   <li class="songlist-item" *ngFor="let song of songList" [class.songlist-item--selected]="currentSong === song">

@@ -14,7 +14,8 @@ import { SpeechComponent } from './player/speech/speech.component'
 import { RecognitionService } from './player/speech/recognition.service';
 import { SongSelectionComponent } from './components/song-selection/song-selection.component';
 import { LoaderSongComponent } from './components/loader-song/loader-song.component';
-import { AccessComponent } from './components/access/access.component'
+import { AccessComponent } from './components/access/access.component';
+import { CreateSongComponent } from './components/create-song/create-song.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AccessComponent } from './components/access/access.component'
     SpeechComponent,
     SongSelectionComponent,
     LoaderSongComponent,
-    AccessComponent
+    AccessComponent,
+    CreateSongComponent
   ],
   imports: [
     BrowserModule,
