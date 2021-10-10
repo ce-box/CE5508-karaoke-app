@@ -9,7 +9,7 @@ describe('SongsService', () => {
     });
   });
 
-  it('should be created', inject([SongsService], (service: SongsService) => {
+  it('should ts be created', inject([SongsService], (service: SongsService) => {
     expect(service).toBeTruthy();
   }));
 });
