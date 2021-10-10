@@ -32,8 +32,7 @@ export class LyricsComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(
     private service: PlayerService,
-    private http: HttpClient,
-    private httpLocal: Http
+    private http: HttpClient
   ) { }
 
   ngOnInit() {

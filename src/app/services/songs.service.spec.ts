@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { SongsService } from './songs.service';
@@ -5,11 +6,12 @@ import { SongsService } from './songs.service';
 describe('SongsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SongsService]
+      providers: [SongsService],
+      imports: [HttpClientTestingModule]
     });
   });
 
-  xit('should be created', inject([SongsService], (service: SongsService) => {
+  it('should be created', inject([SongsService], (service: SongsService) => {
     expect(service).toBeTruthy();
   }));
 });

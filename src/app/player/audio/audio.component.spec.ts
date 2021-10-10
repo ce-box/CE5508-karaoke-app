@@ -1,6 +1,9 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {HttpClientTestingModule} from '@angular/common/http/testing'
 import { AudioComponent } from './audio.component';
+import { PlayerService } from '../player.service';
+import { of } from 'rxjs/observable/of';
 
 describe('AudioComponent', () => {
   let component: AudioComponent;
@@ -8,7 +11,10 @@ describe('AudioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AudioComponent ]
+      imports: [ HttpClientTestingModule],
+      providers: [PlayerService],
+      declarations: [ AudioComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -19,7 +25,7 @@ describe('AudioComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
