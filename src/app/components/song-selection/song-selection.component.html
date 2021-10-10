@@ -1,25 +1,23 @@
-<a href="#modal">edfedfedfdf</a>
 <app-create-song class="container-all" id="modal"></app-create-song>
 <div>
 <header class="header-main">
   <div class="header-main-home-button">
-    <button class="home-button">
-      <img width="68" src="./../../../assets/images/home.png" alt="" />
-    </button>
+
   </div>
   <div class="header-main-search">
     <img width="400" src="./../../../assets/images/astraoke.png" alt="" />
     <h1 class="main-tittle-search">¿Qué vas a cantar hoy?</h1>
     <div class="header-search-input">
       <input type="text" class="input" placeholder="Buscá tu canción..." />
-      <button class="plus-button">
+      <a *ngIf="user.role === 'premium-user'" href="#modal" class="plus-button">
         <img width="40" src="./../../../assets/images/plus.png" alt="" />
-      </button>
+      </a>
     </div>
   </div>
   <div class="header-main-user-button">
     <button class="user-button">
-      <img width="60" src="./../../../assets/images/rocket.png" alt="" />
+      <img *ngIf="user.role === 'basic-user'" width="60" src="./../../../assets/images/rocket.png" alt="" />
+      <img *ngIf="user.role !== 'basic-user'" width="60" src="./../../../assets/images/start.svg" alt="" />
     </button>
   </div>
 </header>
@@ -33,7 +31,7 @@
           <p class="carousel-item__details--subtitle">{{ song.artist }}</p>
         </div>
       </div>
-      <div class="carousel__container--button-container">
+      <div *ngIf="user.role === 'premium-user'" class="carousel__container--button-container">
         <img
           (click)="onDeleteSong(song._id)"
           class="button-container__delete"

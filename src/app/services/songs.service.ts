@@ -5,14 +5,19 @@ import { Song } from '../models/song';
 @Injectable()
 export class SongsService {
 
-  private urlAPI: string = 'http://23.99.226.234:8000/api/songs';
+  private urlAPI: string = 'http://23.99.226.234:8000/api/v1/songs';
+  private apiKEY: string = 'H8q9eSgR';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getAllSongs() {
-    return this.http.get<Song[]>(this.urlAPI);
+    return this.http.get<Song[]>(this.urlAPI, {
+      headers: {
+        "api": this.apiKEY
+      }
+    });
   }
 
   delete(_id: string) {

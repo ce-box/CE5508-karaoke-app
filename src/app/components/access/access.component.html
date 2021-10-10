@@ -1,4 +1,4 @@
-<section *ngIf="!isResister" class="login-main">
+<section *ngIf="!isRegister" class="login-main">
   <div class="lines-container__login">
     <hr class="line-1__login">
     <hr class="line-2__login">
@@ -20,7 +20,7 @@
     </form>
   </div>
 </section>
-<section *ngIf="isResister" class="register-main">
+<section *ngIf="isRegister" class="register-main">
   <div class="lines-container__register">
     <hr class="line-1__register">
     <hr class="line-2__register">
@@ -37,7 +37,10 @@
       </div>
       <div class="block-two-register">
         <input type="password" name="new-password" autocomplete="new-password" required [(ngModel)]="userRegister.password" class="input" id="block-two-input" placeholder="Contraseña">
-        <input type="password" name="current-password" autocomplete="current-password" required [(ngModel)]="userRegister.confirmPassword" class="input" placeholder="Confirmar contraseña">
+        <p>
+          <input type="radio" value="basic-user" name="role" [(ngModel)]="userRegister.role" > Básico
+          <input type="radio" value="premium-user" name="role" [(ngModel)]="userRegister.role" > Premium
+       </p>
       </div>
       <div class="register-link">
         <p>¿Ya tenés cuenta?</p>

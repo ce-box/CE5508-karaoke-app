@@ -6,6 +6,7 @@
     <div class="app-body-songlist" *ngIf="!OnCurrentSong && !onPlaySong">
       <song-selection
         (onChooseSong)="handleChooseSong($event)"
+        [token]="token"
       ></song-selection>
     </div>
     <div class="app-body-content" *ngIf="OnCurrentSong || onPlaySong">

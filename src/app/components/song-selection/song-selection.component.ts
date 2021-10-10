@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
-import { SongsService } from '../../services/songs.service'
+import { SongsService } from '../../services/songs.service';
+import { UsersService } from './../../services/users.service';
 
-import { Song } from '../../models/song'
+import { Song } from '../../models/song';
+import { AccessInformationUserDTO } from './../../models/access';
 
 @Component({
   selector: 'song-selection',
@@ -11,11 +13,20 @@ import { Song } from '../../models/song'
 })
 export class SongSelectionComponent implements OnInit {
 
+  @Input() token: string = '';
   @Output() onChooseSong = new EventEmitter<Song>();
   songs: Song[] = [];
+  user: AccessInformationUserDTO = {
+    _id: '',
+    email: '',
+    name: '',
+    username: '',
+    role: ''
+  }
 
   constructor(
-    private songService: SongsService
+    private songService: SongsService,
+    private userService: UsersService
   ) { }
 
   ngOnInit() {
@@ -23,6 +34,10 @@ export class SongSelectionComponent implements OnInit {
     .subscribe(data => {
       this.songs = data;
     });
+    this.userService.getUserInformation(this.token)
+    .subscribe(data => {
+      this.user = data
+    })
   }
 
   handleChooseSong($event, song: Song) {

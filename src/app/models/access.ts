@@ -3,10 +3,14 @@ export interface Access {
   name: string;
   username: string;
   password: string;
-  confirmPassword: string;
+  role: string;
 }
 
-export interface AccessUserDTO extends Omit<Access, 'name' | 'username' | 'confirmPassword'> {
+export interface AccessUserDTO extends Omit<Access, 'name' | 'username' | 'role'> {
 
+}
+
+export interface AccessInformationUserDTO extends Omit<Access, 'password'> {
+  _id: string;
 }
 

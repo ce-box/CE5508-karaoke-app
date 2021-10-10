@@ -7,7 +7,9 @@ import {  FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { PlayerService } from './player/player.service';
-import { SongsService } from './services/songs.service'
+import { SongsService } from './services/songs.service';
+import { UsersService } from './services/users.service';
+import { FileService } from './services/file.service'
 import { AudioComponent } from './player/audio/audio.component';
 import { LyricsComponent } from './player/lyrics/lyrics.component'
 import { SpeechComponent } from './player/speech/speech.component'
@@ -38,6 +40,8 @@ import { CreateSongComponent } from './components/create-song/create-song.compon
   providers: [
     PlayerService,
     SongsService,
+    UsersService,
+    FileService,
     RecognitionService
   ],
   bootstrap: [AppComponent]
