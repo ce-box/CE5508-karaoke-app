@@ -54,6 +54,11 @@ describe('SongsService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(listSong);
   });
+  it('deleteSong', ()=>{
+    const req = httpMock.expectOne('http://23.99.226.234:8000/api/songs/01');
+    expect(req.request.method).toBe('DELETE');
+    req.flush(listSong);
+  });
 
   
 });
