@@ -11,7 +11,7 @@
     </div>
     <div class="app-body-content" *ngIf="OnCurrentSong || onPlaySong">
       <app-loader-song *ngIf="OnCurrentSong" [song]="OnCurrentSong" (currentSongLoader)="homeDirection($event)" (playSong)="handlePlaySong($event)"></app-loader-song>
-      <Player  *ngIf="onPlaySong" [currentSong]="onPlaySong"></Player>
+      <Player  *ngIf="onPlaySong" [currentSong]="onPlaySong" (playSong)="handlePlaySong($event)"></Player>
     </div>
   </div>
 </div>

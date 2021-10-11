@@ -106,10 +106,9 @@
   transform: scale(1.2);
 }
 
-.button {
+.file-select {
   background-color: rgba(250, 248, 255, 0.2);
   border: none;
-  width: 100%;
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.4);
   font-family: 'Muli', sans-serif;
@@ -120,6 +119,33 @@
   padding: 0px 20px;
   display: flex;
   align-items: center;
+  content: 'Seleccionar'; /* testo por defecto */
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.file-select:hover {
+  background-color: rgba(250, 248, 255, 0.3);
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  display: inline-block;
+  width: 1.5rem;
+}
+
+#src-file1::after {
+  content: 'Archivo canción .mp3';
+}
+
+#src-file2::after {
+  content: 'Archivo letra .lrc';
+}
+
+#src-file3::after {
+  content: 'Archivo imagen .jpg/.png';
 }
 
 .login-button {

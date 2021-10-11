@@ -5,22 +5,18 @@
           <input type="text" class="input" placeholder="Nombre">
           <input type="text" class="input" placeholder="Artista">
           <input type="text" class="input" placeholder="Álbum">
-          <button type="submit" class="button">
-              <img src="./../../../assets/images/Group.svg">
-              Archivo canción .mp3
-              <input type="file" (change)="onUpload($event)">
-          </button>
-          <button type="submit" class="button">
-              <img src="./../../../assets/images/Group.svg">
-              Archivo letra .lrc
-          </button>
-          <button type="submit" class="button">
-              <img src="./../../../assets/images/Group.svg">
-              Archivo imagen .jpg/ .png
-          </button>
-          <button type="submit" class="login-button">
-            <img src="./../../../assets/images/login.png" alt="Registrar">
-          </button>
+          <div class="file-select" id="src-file1">
+            <span><img width="30px" src="./../../../assets/images/Group.svg"></span>
+            <input type="file" name="src-file1" aria-label="Archivo" (change)="onUpload($event)">
+          </div>
+          <div class="file-select" id="src-file2">
+            <span><img width="30px" src="./../../../assets/images/Group.svg"></span>
+            <input type="file" name="src-file2" aria-label="Archivo" (change)="onUpload($event)">
+          </div>
+          <div class="file-select" id="src-file3">
+            <span><img width="30px" src="./../../../assets/images/Group.svg"></span>
+            <input type="file" name="src-file3" aria-label="Archivo" (change)="onUpload($event)">
+          </div>
         </form>
   </div>
 

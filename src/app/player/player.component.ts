@@ -9,7 +9,8 @@ import { Song } from '../models/song';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnChanges {
-  @Input() currentSong: Song
+  @Input() currentSong: Song;
+  @Output() playSong = new EventEmitter<Song>();
   public songTime: string = '';
   public delaySong: string = '0';
   public sonFile: string = "./../../assets/songs/dont-stop-believing/dont-stop-believing.lrc"
@@ -61,6 +62,10 @@ export class PlayerComponent implements OnChanges {
     const matches = this.PlayerService.countMatches(text, this.lines)
 
     this.points += (matches * this.POINTS_MULTIPLIER)
+  }
+
+  handlePlaySong() {
+    this.playSong.emit(null);
   }
 
 }
