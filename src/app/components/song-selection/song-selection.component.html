@@ -8,7 +8,7 @@
     <img width="400" src="./../../../assets/images/astraoke.png" alt="" />
     <h1 class="main-tittle-search">¿Qué vas a cantar hoy?</h1>
     <div class="header-search-input">
-      <input type="text" class="input" placeholder="Buscá tu canción..." />
+      <input type="text" class="input" name="filterSongs" placeholder="Buscá tu canción..." [(ngModel)]="filterSongs"/>
       <a *ngIf="user.role === 'premium-user'" href="#modal" class="plus-button">
         <img width="40" src="./../../../assets/images/plus.png" alt="" />
       </a>
@@ -25,7 +25,7 @@
 </header>
 <section class="carousel" id="carousel-style">
   <div class="carousel__container">
-    <div class="carousel-item-container" *ngFor="let song of songs">
+    <div class="carousel-item-container" *ngFor="let song of songs | filter:filterSongs">
       <div class="carousel-item" (click)="handleChooseSong($event, song)">
         <img class="carousel-item__img" [src]="song.cover" alt="Flower" />
         <div class="carousel-item__details">

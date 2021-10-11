@@ -17,7 +17,8 @@ import { RecognitionService } from './player/speech/recognition.service';
 import { SongSelectionComponent } from './components/song-selection/song-selection.component';
 import { LoaderSongComponent } from './components/loader-song/loader-song.component';
 import { AccessComponent } from './components/access/access.component';
-import { CreateSongComponent } from './components/create-song/create-song.component'
+import { CreateSongComponent } from './components/create-song/create-song.component';
+import { FilterPipe } from './pipes/filter.pipe'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CreateSongComponent } from './components/create-song/create-song.compon
     SongSelectionComponent,
     LoaderSongComponent,
     AccessComponent,
-    CreateSongComponent
+    CreateSongComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -147,6 +147,10 @@ h1.main-tittle-search {
   background-color: rgba(250, 248, 255, 0.3);
 }
 
+.input:focus {
+  color: white;
+}
+
 .plus-button {
   background-color: transparent;
   background-repeat: no-repeat;

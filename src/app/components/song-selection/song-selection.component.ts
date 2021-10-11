@@ -16,6 +16,7 @@ export class SongSelectionComponent implements OnInit {
   @Input() token: string = '';
   @Output() onChooseSong = new EventEmitter<Song>();
   songs: Song[] = [];
+  filterSongs = '';
   user: AccessInformationUserDTO = {
     _id: '',
     email: '',

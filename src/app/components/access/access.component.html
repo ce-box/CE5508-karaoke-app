@@ -37,9 +37,9 @@
       </div>
       <div class="block-two-register">
         <input type="password" name="new-password" autocomplete="new-password" required [(ngModel)]="userRegister.password" class="input" id="block-two-input" placeholder="Contraseña">
-        <p>
+        <p class="register-radios-button">
           <input type="radio" value="basic-user" name="role" [(ngModel)]="userRegister.role" > Básico
-          <input type="radio" value="premium-user" name="role" [(ngModel)]="userRegister.role" > Premium
+          <input class="second-radio-button" type="radio" value="premium-user" name="role" [(ngModel)]="userRegister.role" > Premium
        </p>
       </div>
       <div class="register-link">
