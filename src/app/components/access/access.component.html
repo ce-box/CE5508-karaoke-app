@@ -7,7 +7,7 @@
   </div>
   <div class="login-container">
     <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
-      <h1 class="main-tittle" id="main-tittle">INICIO DE SESIÓN</h1>
+      <h1 class="main-tittle-l" id="main-tittle">INICIO DE SESIÓN</h1>
       <input type="text" name="email" autocomplete="email" required [(ngModel)]="userLogin.email" class="input" placeholder="Correo electrónico">
       <input type="password" name="current-password" autocomplete="current-password" required [(ngModel)]="userLogin.password" class="input" placeholder="Contraseña">
       <div class="login-link">
@@ -29,7 +29,7 @@
   </div>
   <div class="register-container">
     <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="register-form">
-      <h1 class="main-tittle" id="main-tittle">REGISTRARME</h1>
+      <h1 class="main-tittle-r" id="main-tittle">REGISTRARME</h1>
       <input type="email" name="email" autocomplete="email" required [(ngModel)]="userRegister.email" class="input" placeholder="Correo electrónico">
       <div class="block-one-resgister">
         <input type="text" name="name" autocomplete="name" required [(ngModel)]="userRegister.name" class="input" id="block-one-input" placeholder="Nombre">

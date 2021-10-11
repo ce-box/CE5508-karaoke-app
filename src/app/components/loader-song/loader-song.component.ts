@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Song } from '../../models/song';
+import { AccessInformationUserDTO } from './../../models/access';
+
+import { UsersService } from './../../services/users.service'
 
 @Component({
   selector: 'app-loader-song',
@@ -18,13 +21,26 @@ export class LoaderSongComponent implements OnInit {
     url: '',
     lyrics: '',
   };
+  @Input() token: string = '';
   @Output() currentSongLoader = new EventEmitter<Song>();
   @Output() playSong = new EventEmitter<Song>();
+  user: AccessInformationUserDTO = {
+    _id: '',
+    email: '',
+    name: '',
+    username: '',
+    role: ''
+  }
 
-  constructor() { }
+  constructor(
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
-    console.log(this.song);
+    this.usersService.getUserInformation(this.token)
+    .subscribe(data => {
+      this.user = data
+    })
   }
 
   handleClearCurrentSong() {

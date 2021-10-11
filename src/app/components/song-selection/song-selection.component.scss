@@ -42,7 +42,7 @@
 
 header.header-main {
   display: grid;
-  grid-template-columns: 1fr 10fr 1fr;;
+  grid-template-columns: 1fr 10fr 1fr;
 }
 
 .home-button{
@@ -107,10 +107,18 @@ header.header-main {
   width: 100%;
 }
 
+p.user-name {
+  color: #FFFFFF;
+  text-shadow:
+  0 0 10px #FFFFFF , 0 0 30px #FFFFFF,
+  0 0 1px #FFFFFF , 0 0 5px #FFFFFF
+}
+
 h1.main-tittle-search {
   margin-top: 3.5rem;
   margin-bottom: 3rem;
   text-align: center;
+  font-family: 'Beon';
   font-size: 4.8rem;
   color: #FFFFFF;
   text-shadow:
@@ -211,6 +219,7 @@ h1.main-tittle-search {
   margin-right: 5rem;
   transition: 450ms all;
   transform-origin: center left;
+  transition: all 360ms;
 }
 
 .carousel-item {
@@ -243,6 +252,7 @@ h1.main-tittle-search {
 }
 .carousel-item__img {
   width: 18rem;
+  border-radius: 10px;
 }
 .carousel-item__details {
   display: flex;

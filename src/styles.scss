@@ -1,8 +1,22 @@
+@font-face {
+  font-family: 'Beon';
+  src: url('./assets/fonts/beon-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Rounded1c';
+  src: url('./assets/fonts/MPLUSRounded1c-Regular.ttf') format('ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+  font-family: 'Rounded1c';
 }
 
 html {
@@ -15,6 +29,8 @@ body {
   background-size: cover;
   background-position: center center;
 }
+
+
 
 
 

@@ -1,7 +1,12 @@
 
 header.header-main {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+.header-main-home-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .home-button{
@@ -11,11 +16,27 @@ header.header-main {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  margin: 2rem;
-  margin-left: 4rem;
-  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  height: fit-content;
+  padding-top: 5rem;
   transition: 450ms all;
   //filter: saturation(10%);
+}
+
+.header-main-user-button p {
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+p.user-name {
+  color: #FFFFFF;
+  text-shadow:
+  0 0 10px #FFFFFF , 0 0 30px #FFFFFF,
+  0 0 1px #FFFFFF , 0 0 5px #FFFFFF
 }
 
 .user-button {
@@ -25,8 +46,13 @@ header.header-main {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  margin: 4rem;
-  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  height: fit-content;
+  padding-top: 5rem;
   transition: 450ms all;
   //filter: saturation(10%);
 }
@@ -47,8 +73,8 @@ header.header-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 8rem;
-  width: 60%;
+  padding-top: 5rem;
+  width: 100%;
 }
 
 .main-song__section-letter {
@@ -142,4 +168,8 @@ header.header-main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.time-font{
+  font-family: 'Beon';
 }

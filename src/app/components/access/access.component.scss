@@ -45,7 +45,7 @@ hr.line-4__login {
   border: none;
 }
 
-h1.main-tittle {
+h1.main-tittle-l {
   margin: 3rem;
   margin-bottom: 5rem;
   font-size: 3.8rem;
@@ -160,7 +160,7 @@ a:hover {
 }
 
 .lines-container__register hr {
-  width: 63rem;
+  width: 60rem;
   height: 5px;
   margin-top: 3rem;
 }
@@ -194,12 +194,13 @@ hr.line-4__register {
   border: none;
 }
 
-h1.main-tittle {
+h1.main-tittle-r {
   margin: 3rem;
   margin-top: 0;
   text-align: center;
+  font-family: 'Beon';
   margin-bottom: 5rem;
-  font-size: 3.8rem;
+  font-size: 5rem;
   color: #3DF1B0;
   text-shadow:
   0 0 10px #3DF1B0 , 0 0 30px #3DF1B0,

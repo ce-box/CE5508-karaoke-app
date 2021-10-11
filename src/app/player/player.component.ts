@@ -1,7 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core'
 import { Observable, Subscription } from 'rxjs'
-import { PlayerService } from './player.service'
+
 import { Song } from '../models/song';
+import { AccessInformationUserDTO } from './.././models/access';
+
+import { PlayerService } from './player.service';
+import { UsersService } from './../services/users.service';
 
 @Component({
   selector: 'Player',
@@ -10,7 +14,15 @@ import { Song } from '../models/song';
 })
 export class PlayerComponent implements OnChanges {
   @Input() currentSong: Song;
+  @Input() token: string = '';
   @Output() playSong = new EventEmitter<Song>();
+  user: AccessInformationUserDTO = {
+    _id: '',
+    email: '',
+    name: '',
+    username: '',
+    role: ''
+  }
   public songTime: string = '';
   public delaySong: string = '0';
   public sonFile: string = "./../../assets/songs/dont-stop-believing/dont-stop-believing.lrc"
@@ -22,10 +34,15 @@ export class PlayerComponent implements OnChanges {
   private readonly POINTS_MULTIPLIER = 5
 
   constructor(
-    private PlayerService: PlayerService
+    private PlayerService: PlayerService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit() {
+    this.usersService.getUserInformation(this.token)
+    .subscribe(data => {
+      this.user = data
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {

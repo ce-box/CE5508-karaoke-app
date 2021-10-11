@@ -18,7 +18,7 @@
     <button class="user-button">
       <img *ngIf="user.role === 'basic-user'" width="60" src="./../../../assets/images/rocket.png" alt="" />
       <img *ngIf="user.role !== 'basic-user'" width="80" src="./../../../assets/images/start.svg" alt="" />
-      <p>{{ user.username }}</p>
+      <p class="user-name" >{{ user.username }}</p>
     </button>
 
   </div>

@@ -1,6 +1,8 @@
 <div class="app">
   <div *ngIf="!token" class="access-body">
-    <app-access (token)="handleChooseToken($event)" ></app-access>
+    <app-access
+      (token)="handleChooseToken($event)" >
+    </app-access>
   </div>
   <div *ngIf="token" class="app-body">
     <div class="app-body-songlist" *ngIf="!OnCurrentSong && !onPlaySong">
@@ -10,8 +12,17 @@
       ></song-selection>
     </div>
     <div class="app-body-content" *ngIf="OnCurrentSong || onPlaySong">
-      <app-loader-song *ngIf="OnCurrentSong" [song]="OnCurrentSong" (currentSongLoader)="homeDirection($event)" (playSong)="handlePlaySong($event)"></app-loader-song>
-      <Player  *ngIf="onPlaySong" [currentSong]="onPlaySong" (playSong)="handlePlaySong($event)"></Player>
+      <app-loader-song *ngIf="OnCurrentSong"
+        [song]="OnCurrentSong"
+        (currentSongLoader)="homeDirection($event)"
+        (playSong)="handlePlaySong($event)"
+        [token]="token">
+      </app-loader-song>
+      <Player  *ngIf="onPlaySong"
+        [currentSong]="onPlaySong"
+        (playSong)="handlePlaySong($event)"
+        [token]="token">
+      </Player>
     </div>
   </div>
 </div>
