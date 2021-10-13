@@ -54,4 +54,8 @@ export class SongSelectionComponent implements OnInit {
     })
   }
 
+  handleNewSong(song: Song) {
+    this.songs.push(song);
+  }
+
 }

@@ -7,3 +7,7 @@ export interface Song {
   url: string,
   lyrics: string
 }
+
+export interface SongDTO extends Omit<Song, '_id'>{
+
+}

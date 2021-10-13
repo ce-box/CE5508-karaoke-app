@@ -1,23 +1,47 @@
 <div class="popup">
   <div class="container-text">
-      <form action="" class="login-form">
-          <h1 class="main-tittle" id="main-tittle">AGREGAR UNA CANCIÓN</h1>
-          <input type="text" class="input" placeholder="Nombre">
-          <input type="text" class="input" placeholder="Artista">
-          <input type="text" class="input" placeholder="Álbum">
-          <div class="file-select" id="src-file1">
-            <span><img width="30px" src="./../../../assets/images/Group.svg"></span>
-            <input type="file" name="src-file1" aria-label="Archivo" (change)="onUpload($event)">
-          </div>
-          <div class="file-select" id="src-file2">
-            <span><img width="30px" src="./../../../assets/images/Group.svg"></span>
-            <input type="file" name="src-file2" aria-label="Archivo" (change)="onUpload($event)">
-          </div>
-          <div class="file-select" id="src-file3">
-            <span><img width="30px" src="./../../../assets/images/Group.svg"></span>
-            <input type="file" name="src-file3" aria-label="Archivo" (change)="onUpload($event)">
-          </div>
-        </form>
+    <form #createSong="ngForm" class="login-form">
+      <h1 class="main-tittle" id="main-tittle">AGREGAR UNA CANCIÓN</h1>
+      <input type="text" required class="input" name="name" placeholder="Nombre" [(ngModel)]="newSong.name"/>
+      <input type="text" required class="input" name="artist" placeholder="Artista" [(ngModel)]="newSong.artist"/>
+      <input type="text" required class="input" name="album" placeholder="Álbum" [(ngModel)]="newSong.album"/>
+      <div class="file-select" id="src-file1">
+        <span
+          ><img width="30px" src="./../../../assets/images/Group.svg"
+        /></span>
+        <input
+          type="file"
+          (change)="onUploadSong($event)"
+        />
+      </div>
+      <div class="file-select" id="src-file2">
+        <span
+          ><img width="30px" src="./../../../assets/images/Group.svg"
+        /></span>
+        <input
+          type="file"
+          name="src-file2"
+          aria-label="Archivo"
+          required
+          (change)="onUploadLyric($event)"
+        />
+      </div>
+      <div class="file-select" id="src-file3">
+        <span
+          ><img width="30px" src="./../../../assets/images/Group.svg"
+        /></span>
+        <input
+          type="file"
+          name="src-file3"
+          aria-label="Archivo"
+          required
+          (change)="onUploadCover($event)"
+        />
+      </div>
+      <button [disabled]="createSong.invalid" (click)='onCreate()' type="submit" class="register-button">
+        <img src="./../../../assets/images/login.png" alt="Registrar">
+      </button>
+    </form>
   </div>
 
   <a href="#" class="btn-close-popup">X</a>

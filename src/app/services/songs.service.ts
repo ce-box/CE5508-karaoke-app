@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Song } from '../models/song';
+import { Song, SongDTO } from '../models/song';
 
 @Injectable()
 export class SongsService {
@@ -14,6 +14,14 @@ export class SongsService {
 
   getAllSongs() {
     return this.http.get<Song[]>(this.urlAPI, {
+      headers: {
+        "api": this.apiKEY
+      }
+    });
+  }
+
+  addSong(dto: SongDTO) {
+    return this.http.post<Song>(this.urlAPI, dto, {
       headers: {
         "api": this.apiKEY
       }
