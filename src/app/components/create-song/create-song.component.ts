@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { FileService } from './../../services/file.service';
 import { SongsService } from './../../services/songs.service'
@@ -12,6 +12,7 @@ import { Song, SongDTO } from './../../models/song';
 })
 export class CreateSongComponent implements OnInit {
 
+  @Input() token: string = ''
   @Output() onChooseSong = new EventEmitter<Song>();
 
   newSong: SongDTO = {
@@ -38,7 +39,7 @@ export class CreateSongComponent implements OnInit {
       this.fileService.uploadFileSong(file)
       .subscribe(rta => {
         console.log(rta);
-        this.newSong.url = rta;
+        this.newSong.url = rta['fileUrl'];
       });
     }
   }
@@ -50,7 +51,7 @@ export class CreateSongComponent implements OnInit {
       this.fileService.uploadFileLyric(file)
       .subscribe(rta => {
         console.log(rta);
-        this.newSong.lyrics = rta;
+        this.newSong.lyrics = rta['fileUrl'];
       });
     }
   }
@@ -62,13 +63,13 @@ export class CreateSongComponent implements OnInit {
       this.fileService.uploadFileCover(file)
       .subscribe(rta => {
         console.log(rta);
-        this.newSong.cover = rta;
+        this.newSong.cover = rta['fileUrl'];
       });
     }
   }
 
   onCreate() {
-    this.songsService.addSong(this.newSong).subscribe(response => {
+    this.songsService.addSong(this.newSong, this.token).subscribe(response => {
       console.log(response);
       this.onChooseSong.emit(response);
     })

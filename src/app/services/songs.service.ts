@@ -20,15 +20,22 @@ export class SongsService {
     });
   }
 
-  addSong(dto: SongDTO) {
+  addSong(dto: SongDTO, token: string) {
     return this.http.post<Song>(this.urlAPI, dto, {
       headers: {
+        Authorization: `Bearer ${token}`,
         "api": this.apiKEY
       }
     });
   }
 
-  delete(_id: string) {
-    return this.http.delete<Song>(`${this.urlAPI}/${_id}`);
+  delete(_id: string, token: string) {
+    return this.http.delete<Song>(`${this.urlAPI}/${_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "api": this.apiKEY
+      }
+    });
+
   }
 }

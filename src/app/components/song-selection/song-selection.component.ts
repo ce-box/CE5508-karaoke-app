@@ -47,7 +47,7 @@ export class SongSelectionComponent implements OnInit {
   }
 
   onDeleteSong(id: string) {
-    this.songService.delete(id)
+    this.songService.delete(id, this.token)
     .subscribe(() => {
       const songIndex = this.songs.findIndex(item => item._id === id);
       this.songs.splice(songIndex, 1);
