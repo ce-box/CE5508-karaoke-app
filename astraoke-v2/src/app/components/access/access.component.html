@@ -1,0 +1,54 @@
+<section *ngIf="!isRegister" class="login-main">
+  <div class="lines-container__login">
+    <hr class="line-1__login">
+    <hr class="line-2__login">
+    <hr class="line-3__login">
+    <hr class="line-4__login">
+  </div>
+  <div class="login-container">
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
+      <h1 class="main-tittle-l" id="main-tittle">INICIO DE SESIÓN</h1>
+      <input type="text" name="email" autocomplete="email" required [(ngModel)]="userLogin.email" class="input" placeholder="Correo electrónico">
+      <input type="password" name="current-password" autocomplete="current-password" required [(ngModel)]="userLogin.password" class="input" placeholder="Contraseña">
+      <div class="login-link">
+        <p>¿No tenés cuenta?</p>
+        <a (click)="handledIsRegister()" href="#">Registrate acá</a>
+      </div>
+      <button [disabled]="loginForm.invalid" type="submit" class="login-button">
+        <img src="./../../../assets/images/login.png" alt="Registrar">
+      </button>
+    </form>
+  </div>
+</section>
+<section *ngIf="isRegister" class="register-main">
+  <div class="lines-container__register">
+    <hr class="line-1__register">
+    <hr class="line-2__register">
+    <hr class="line-3__register">
+    <hr class="line-4__register">
+  </div>
+  <div class="register-container">
+    <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="register-form">
+      <h1 class="main-tittle-r" id="main-tittle">REGISTRARME</h1>
+      <input type="email" name="email" autocomplete="email" required [(ngModel)]="userRegister.email" class="input" placeholder="Correo electrónico">
+      <div class="block-one-resgister">
+        <input type="text" name="name" autocomplete="name" required [(ngModel)]="userRegister.name" class="input" id="block-one-input" placeholder="Nombre">
+        <input type="text" name="username" autocomplete="username" required [(ngModel)]="userRegister.username" class="input" placeholder="UserName">
+      </div>
+      <div class="block-two-register">
+        <input type="password" name="new-password" autocomplete="new-password" required [(ngModel)]="userRegister.password" class="input" id="block-two-input" placeholder="Contraseña">
+        <p class="register-radios-button">
+          <input type="radio" value="basic-user" name="role" [(ngModel)]="userRegister.role" > Básico
+          <input class="second-radio-button" type="radio" value="premium-user" name="role" [(ngModel)]="userRegister.role" > Premium
+       </p>
+      </div>
+      <div class="register-link">
+        <p>¿Ya tenés cuenta?</p>
+        <a (click)="handledIsRegister()" href="#">Iniciá Sesión</a>
+      </div>
+      <button [disabled]="registerForm.invalid" type="submit" class="register-button">
+        <img src="./../../../assets/images/register.png" alt="Registrar">
+      </button>
+    </form>
+  </div>
+</section>

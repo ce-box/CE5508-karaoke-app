@@ -1,0 +1,44 @@
+<header class="header-main">
+  <div class="header-main-home-button">
+    <button (click)="handleClearCurrentSong()" class="home-button">
+      <img width="68" src="../../../assets/images/back.png" alt="" />
+    </button>
+  </div>
+  <div class="header-main-search">
+    <img width="400" src="../../../assets/images/astraoke.png" alt="" />
+  </div>
+  <div class="header-main-user-button">
+    <button class="user-button">
+      <img *ngIf="user.role === 'basic-user'" width="60" src="./../../../assets/images/rocket.png" alt="" />
+      <img *ngIf="user.role !== 'basic-user'" width="80" src="./../../../assets/images/start.svg" alt="" />
+      <p class="user-name" >{{ user.username }}</p>
+    </button>
+  </div>
+</header>
+<main class="main-song">
+  <section class="main-song__section-letter">
+    <div class="section-letter__container">
+      <div class="section-letter-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+      <div class="section-letter-lyric">
+        <p class="letter-lyric">---- ---- ----</p>
+      </div>
+    </div>
+  </section>
+  <section class="main-song__section-information">
+    <div class="section-information-song">
+      <img width="100rem" [src]="song.cover" alt="">
+      <div>
+        <h1 class="song-name">{{ song.name }}</h1>
+        <p class="artist-name">{{ song.artist }}</p>
+      </div>
+    </div>
+    <button (click)="handlePlaySong()" class="plus-button">
+      <img src="../../../assets/images/play_white.png" alt="">
+    </button>
+    <p class="time-font">00:00</p>
+  </section>
+</main>

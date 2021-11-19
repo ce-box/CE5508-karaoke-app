@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { Song, SongDTO } from './../../models/song';
 
 import { FileService } from './../../services/file.service';
 import { SongsService } from './../../services/songs.service'
-
-import { Song, SongDTO } from './../../models/song';
 
 @Component({
   selector: 'app-create-song',
@@ -12,16 +12,16 @@ import { Song, SongDTO } from './../../models/song';
 })
 export class CreateSongComponent implements OnInit {
 
-  @Input() token: string = ''
+  @Input() token: string = '';
   @Output() onChooseSong = new EventEmitter<Song>();
 
   newSong: SongDTO = {
     name: '',
-    album: '',
     artist: '',
+    album: '',
     cover: '',
-    lyrics: '',
-    url: ''
+    url: '',
+    lyrics: ''
   }
 
   constructor(
@@ -29,41 +29,40 @@ export class CreateSongComponent implements OnInit {
     private songsService: SongsService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit(): void {}
 
   onUploadSong(event: Event) {
     const element = event.target as HTMLInputElement;
-    const file = element.files.item(0);
+    const file = element.files?.item(0)
     if (file) {
       this.fileService.uploadFileSong(file)
       .subscribe(rta => {
         console.log(rta);
-        this.newSong.url = rta['fileUrl'];
+        this.newSong.url = rta;
       });
     }
   }
 
   onUploadLyric(event: Event) {
     const element = event.target as HTMLInputElement;
-    const file = element.files.item(0);
+    const file = element.files?.item(0);
     if (file) {
       this.fileService.uploadFileLyric(file)
       .subscribe(rta => {
         console.log(rta);
-        this.newSong.lyrics = rta['fileUrl'];
+        this.newSong.lyrics = rta;
       });
     }
   }
 
   onUploadCover(event: Event) {
     const element = event.target as HTMLInputElement;
-    const file = element.files.item(0);
+    const file = element.files?.item(0);
     if (file) {
       this.fileService.uploadFileCover(file)
       .subscribe(rta => {
         console.log(rta);
-        this.newSong.cover = rta['fileUrl'];
+        this.newSong.cover = rta;
       });
     }
   }
@@ -73,7 +72,6 @@ export class CreateSongComponent implements OnInit {
       console.log(response);
       this.onChooseSong.emit(response);
     })
-
   }
 
 }

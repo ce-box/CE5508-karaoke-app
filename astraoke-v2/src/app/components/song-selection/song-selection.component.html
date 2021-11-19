@@ -1,0 +1,52 @@
+<app-create-song [token]="token" (onChooseSong)="handleNewSong($event)" class="container-all" id="modal"></app-create-song>
+<div>
+<header class="header-main">
+  <div class="header-main-home-button">
+
+  </div>
+  <div class="header-main-search">
+    <img width="400" src="./../../../assets/images/astraoke.png" alt="" />
+    <h1 class="main-tittle-search">¿Qué vas a cantar hoy?</h1>
+    <div class="header-search-input">
+      <input type="text" class="input" name="filterSongs" placeholder="Buscá tu canción..." [(ngModel)]="filterSongs"/>
+      <a *ngIf="user.role === 'premium-user'" href="#modal" class="plus-button">
+        <img width="40" src="./../../../assets/images/plus.png" alt="" />
+      </a>
+    </div>
+  </div>
+  <div class="header-main-user-button">
+    <button class="user-button">
+      <img *ngIf="user.role === 'basic-user'" width="60" src="./../../../assets/images/rocket.png" alt="" />
+      <img *ngIf="user.role !== 'basic-user'" width="80" src="./../../../assets/images/start.svg" alt="" />
+      <p class="user-name" >{{ user.username }}</p>
+    </button>
+
+  </div>
+</header>
+<section class="carousel" id="carousel-style">
+  <div class="carousel__container">
+    <div class="carousel-item-container" *ngFor="let song of songs | filter:filterSongs">
+      <div class="carousel-item" (click)="handleChooseSong($event, song)">
+        <img class="carousel-item__img" [src]="song.cover" alt="Flower" />
+        <div class="carousel-item__details">
+          <h3 class="carousel-item__details--title">{{ song.name }}</h3>
+          <p class="carousel-item__details--subtitle">{{ song.artist }}</p>
+        </div>
+      </div>
+      <div *ngIf="user.role === 'premium-user'" class="carousel__container--button-container">
+        <img
+          (click)="onDeleteSong(song._id)"
+          class="button-container__delete"
+          src="../../../assets/images/delete.svg"
+          alt=""
+        />
+        <img
+          class="button-container__edit"
+          src="../../../assets/images/edit.svg"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>
+</div>
