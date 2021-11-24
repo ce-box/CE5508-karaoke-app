@@ -1,0 +1,8 @@
+<div class="play-button-container">
+  <button *ngIf="!isPlaying" class="pause-play-button" (click)="handleAudioPlayPause()">
+    {{ <img src="../../../assets/images/play_white.png" alt="Play Button"> }}
+  </button>
+  <button *ngIf="isPlaying" class="pause-play-button" (click)="handleAudioPlayPause()">
+    {{ <img src="../../../assets/images/pause.png" alt="Pause Button"> }}
+  </button>
+</div>

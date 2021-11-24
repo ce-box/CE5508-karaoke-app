@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Song } from '../app/models/song';
+import './natural';
 
 @Component({
   selector: 'app-root',

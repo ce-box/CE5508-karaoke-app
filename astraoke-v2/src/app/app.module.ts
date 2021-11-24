@@ -11,6 +11,10 @@ import { AccessComponent } from './components/access/access.component';
 import { CreateSongComponent } from './components/create-song/create-song.component';
 import { LoaderSongComponent } from './components/loader-song/loader-song.component';
 import { SongSelectionComponent } from './components/song-selection/song-selection.component';
+import { AudioComponent } from './player/audio/audio.component';
+import { LyricsComponent } from './player/lyrics/lyrics.component';
+import { SpeechComponent } from './player/speech/speech.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { SongSelectionComponent } from './components/song-selection/song-selecti
     CreateSongComponent,
     LoaderSongComponent,
     SongSelectionComponent,
+    AudioComponent,
+    LyricsComponent,
+    SpeechComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,

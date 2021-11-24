@@ -1,34 +1,32 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core'
-import { Observable, Subscription } from 'rxjs'
-import { interval } from 'rxjs/observable/interval';
-import { timer } from 'rxjs/observable/timer';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/filter'
-import 'rxjs/add/operator/distinct'
-import 'rxjs/add/operator/timeout'
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { merge, Subscription } from 'rxjs';
+import { fromEvent } from 'rxjs';
+
+import { map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { distinct } from 'rxjs/operators';
+import { timeout } from 'rxjs/operators';
 
 import { RecognitionService } from './recognition.service'
 
+
 @Component({
-  selector: 'player-speech',
+  selector: 'app-speech',
   templateUrl: './speech.component.html',
-  styleUrls: ['./speech.component.css']
+  styleUrls: ['./speech.component.scss']
 })
-export class SpeechComponent implements OnInit, OnDestroy {
+export class SpeechComponent implements OnInit {
 
-  @Input() playPause: EventEmitter<boolean>
-  @Output() onSpeechFound = new EventEmitter<string>()
-  private subscriptions: Subscription[] = []
-  private recognition: SpeechRecognition
-  public isAutoRestarting: boolean = false
-  public isRecording: boolean = false
+  @Input() playPause = new EventEmitter<boolean>();
+  @Output() onSpeechFound = new EventEmitter<string>();
+  private subscriptions: Subscription[] = [];
+  private recognition: any;
+  public isAutoRestarting: boolean = false;
+  public isRecording: boolean = false;
 
-  constructor(
-    private RecognitionService: RecognitionService
-  ) { }
+  constructor(private RecognitionService: RecognitionService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.recognition = this.RecognitionService.getRecognition()
     const result$ = fromEvent(this.recognition, 'result')
     const start$ = fromEvent(this.recognition, 'start')
@@ -38,7 +36,9 @@ export class SpeechComponent implements OnInit, OnDestroy {
       // console.log('start')
       this.isRecording = true
 
-      result$.timeout(5000).subscribe(null, () => {
+      result$.pipe(
+        timeout(5000)
+      ).subscribe(() => {
         if (this.isRecording) {
           // console.log('timeout, restarting...')
           this.isAutoRestarting = true
@@ -47,7 +47,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
       })
     })
 
-    const onEnd = Observable.merge(stop$, end$).subscribe(() => {
+    const onEnd = merge(stop$, end$).subscribe(() => {
       // console.log('stop or end?')
       if (this.isAutoRestarting) {
         this.isAutoRestarting = false
@@ -57,12 +57,12 @@ export class SpeechComponent implements OnInit, OnDestroy {
       }
     })
 
-    const onResult = result$
-      .map((e: SpeechRecognitionEvent) => e.results[e.results.length - 1])
-      .filter((result: SpeechRecognitionResult) => result.isFinal)
-      .map((result: SpeechRecognitionResult) => result[0].transcript)
-      .distinct()
-      .subscribe((text: string) => {
+    const onResult = result$.pipe(
+      map((e: any) => e.results[e.results.length - 1]),
+      filter((result: SpeechRecognitionResult) => result.isFinal),
+      map((result: SpeechRecognitionResult) => result[0].transcript),
+      distinct()
+    ).subscribe((text: string) => {
         this.onSpeechFound.emit(text)
       })
 
