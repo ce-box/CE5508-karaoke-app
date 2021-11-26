@@ -16,9 +16,19 @@
     </div>
     <div class="header-main-user-button">
       <button class="user-button">
-        <img *ngIf="user.role === 'basic-user'" width="60" src="./../../../assets/images/rocket.png" alt="" />
-        <img *ngIf="user.role !== 'basic-user'" width="80" src="./../../../assets/images/start.svg" alt="" />
-        <p class="user-name" >{{ user.username }}</p>
+        <img
+          *ngIf="user.role === 'basic-user'"
+          width="60"
+          src="./../../../assets/images/rocket.png"
+          alt=""
+        />
+        <img
+          *ngIf="user.role !== 'basic-user'"
+          width="80"
+          src="./../../../assets/images/start.svg"
+          alt=""
+        />
+        <p class="user-name">{{ user.username }}</p>
       </button>
     </div>
   </header>
@@ -31,10 +41,10 @@
           [onCurrentTimeUpdate]="onLyricsTimeUpdate"
           (onNewLine)="handleLyricsNewLine($event)"
         ></app-lyrics>
-        <!--<player-speech
-        [playPause]="onSpeechStart"
-        (onSpeechFound)="handleSpeechFound($event)"
-      ></player-speech>-->
+        <app-speech
+          [playPause]="onSpeechStart"
+          (onSpeechFound)="handleSpeechFound($event)"
+        ></app-speech>
       </div>
     </div>
   </main>
@@ -51,16 +61,14 @@
         </div>
         <div class="cassette-main__information-container">
           <div class="information-container__cassette">
-            <img width="50rem" [src]="currentSong.cover" alt="Album">
+            <img width="50rem" [src]="currentSong.cover" alt="Album" />
             <h1 class="container__cassette-tittle">{{ currentSong.name }}</h1>
             <p class="container__cassette-artist">{{ currentSong.artist }}</p>
           </div>
         </div>
         <div class="cassette-main__elements-container">
           <div class="elements-container__cassette-one">
-            <div class="elements-containe__casette-two">
-
-            </div>
+            <div class="elements-containe__casette-two"></div>
           </div>
         </div>
       </div>
@@ -70,4 +78,4 @@
       <p class="time-final">{{ songTime }}</p>
     </div>
   </footer>
-  </section>
+</section>
