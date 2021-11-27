@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Access, AccessInformationUserDTO, AccessUserDTO } from './../models/access';
 import { Token } from './../models/token';
+import { constants } from '../const';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private urlAPI: string = 'http://23.99.226.234:8000/api/v1';
+  private readonly urlAPI: string = `${constants.URL}api/v1'`;
   private apiKEY: string = 'H8q9eSgR';
 
   constructor(private http: HttpClient) { }

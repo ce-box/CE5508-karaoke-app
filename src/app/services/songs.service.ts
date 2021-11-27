@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Song, SongDTO } from '../models/song';
+import { constants } from '../const';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongsService {
 
-  private urlAPI: string = 'http://23.99.226.234:8000/api/v1/songs';
+  private readonly urlAPI: string = `${constants.URL}api/v1/songs`;
   private apiKEY: string = 'H8q9eSgR';
 
   constructor(private http: HttpClient) { }

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { constants } from '../const';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
 
+  private readonly urlAPI: string = `${constants.URL}api/v1/files/`;
   constructor(private http: HttpClient) { }
 
   uploadFileCover(file: Blob) {
@@ -14,7 +16,7 @@ export class FileService {
     dto.append("image", file);
     dto.append("fieldname", name);
     return this.http.post<string>(
-      "http://23.99.226.234:8000/api/v1/files/upload/image",
+      `${this.urlAPI}upload/image`,
       dto,
       {}
     );
@@ -26,7 +28,7 @@ export class FileService {
     dto.append("audio", file);
     dto.append("fieldname", name);
     return this.http.post<string>(
-      "http://23.99.226.234:8000/api/v1/files/upload/audio",
+      `${this.urlAPI}upload/audio`,
       dto,
       {}
     );
@@ -38,7 +40,7 @@ export class FileService {
     dto.append("lyric", file);
     dto.append("fieldname", name);
     return this.http.post<string>(
-      "http://23.99.226.234:8000/api/v1/files/upload/lyric",
+      `${this.urlAPI}upload/lyric`,
       dto,
       {}
     );
