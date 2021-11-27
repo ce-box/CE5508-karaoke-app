@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { LoaderSongComponent } from './loader-song.component';
 
 describe('LoaderSongComponent', () => {
@@ -8,7 +8,8 @@ describe('LoaderSongComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoaderSongComponent ]
+      declarations: [ LoaderSongComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
