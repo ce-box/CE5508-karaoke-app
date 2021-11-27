@@ -9,7 +9,7 @@ import { constants } from '../const';
 })
 export class UsersService {
 
-  private readonly urlAPI: string = `${constants.URL}api/v1'`;
+  private readonly urlAPI: string = `${constants.URL}api/v1`;
   private apiKEY: string = 'H8q9eSgR';
 
   constructor(private http: HttpClient) { }
