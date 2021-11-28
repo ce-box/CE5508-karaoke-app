@@ -25,9 +25,10 @@ export class SongSelectionComponent implements OnInit {
     role: ''
   }
 
+
   constructor(
     private songService: SongsService,
-    private userService: UsersService
+    private userService: UsersService,
   ) { }
 
   ngOnInit(): void {
