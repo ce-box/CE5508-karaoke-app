@@ -1,6 +1,6 @@
 export interface Stats {
   _id: string,
-  userName: string,
+  username: string,
   score: number,
   songId: string
 }

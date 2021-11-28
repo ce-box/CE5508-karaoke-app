@@ -41,6 +41,12 @@
     <button (click)="handlePlaySong()" class="plus-button">
       <img src="../../../assets/images/play_white.png" alt="">
     </button>
-    <p class="time-font">00:00</p>
+    <div class="scores">
+      <h1>Scores</h1>
+      <br>
+      <p>{{ stats[0]?.username }} : {{ stats[0]?.score }} </p>
+      <p>{{ stats[1]?.username }} : {{ stats[1]?.score }} </p>
+      <p>{{ stats[2]?.username }} : {{ stats[2]?.score }} </p>
+    </div>
   </section>
 </main>
