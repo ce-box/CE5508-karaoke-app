@@ -2,9 +2,11 @@ import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChange
 
 import { Song } from '../models/song';
 import { AccessInformationUserDTO } from './.././models/access';
+import { StatsDTO } from '../models/stats';
 
 import { PlayerService } from './player.service';
 import { UsersService } from './../services/users.service';
+import { StatsService } from '../services/stats.service';
 
 @Component({
   selector: 'app-player',
@@ -43,7 +45,8 @@ export class PlayerComponent implements OnChanges {
 
   constructor(
     private PlayerService: PlayerService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private statsService: StatsService
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +69,18 @@ export class PlayerComponent implements OnChanges {
 
   handleAudioPlayPause(isPlaying: boolean) {
     this.onSpeechStart.emit(isPlaying)
+    if ((this.currentTime === this.songTime) && (this.points !== 0) ) {
+      const scoreStats: StatsDTO = {
+        songId: this.currentSong._id,
+        username: this.user.username,
+        score: this.points
+      }
+      this.statsService.addStat(scoreStats, this.token)
+      .subscribe(data => {
+        console.log(data);
+      })
+      this.resetPlayer();
+    }
   }
 
   handleAudioTimeUpdate = (time: number) => {

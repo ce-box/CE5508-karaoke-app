@@ -37,7 +37,7 @@ export class SpeechComponent implements OnInit {
       this.isRecording = true
 
       result$.pipe(
-        timeout(5000)
+        timeout(50000)
       )
       .subscribe(() => {
         if (this.isRecording) {

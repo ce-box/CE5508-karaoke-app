@@ -6,7 +6,9 @@ export interface Stats {
 }
 
 export interface StatsDTO {
-  songId: string
+  songId: string,
+  username: string,
+  score: number
 }
 
 export interface Wiki {

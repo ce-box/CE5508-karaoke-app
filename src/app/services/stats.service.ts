@@ -22,6 +22,15 @@ export class StatsService {
     })
   }
 
+  addStat(scoreStat: StatsDTO, token: string) {
+    return this.http.post(`${this.urlAPI}`, scoreStat, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "api": this.apiKEY
+      }
+    })
+  }
+
   getWiki(artistName: string, token: string) {
     return this.http.get<Wiki>(`${constants.URL}api/v1/artists/${artistName}`, {
       headers: {
@@ -30,4 +39,5 @@ export class StatsService {
       }
     })
   }
+
 }
