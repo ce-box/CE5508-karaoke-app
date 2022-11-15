@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+    angular-app:
+       container_name: front-end
+       image: estalvgs/astraokefe
+       build: .
+       ports:
+           - "80:80"

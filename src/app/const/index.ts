@@ -1,3 +1,3 @@
 export const constants = {
-    URL: 'http://23.99.226.234:8000/',
+  URL: 'http://34.205.146.80:8000/',
 };
